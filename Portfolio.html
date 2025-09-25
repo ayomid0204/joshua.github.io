@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua  Ekundayo | Creative Writer & Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #FF6584;
+            --accent-color: #00B4D8;
+            --text-color: #2D3748;
+            --bg-color: #FFFFFF;
+            --card-bg: #F7FAFC;
+            --header-bg: #FFFFFF;
+            --footer-bg: #1A202C;
+            --transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            --text-color: #E2E8F0;
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --header-bg: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            transition: var(--transition);
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--header-bg);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .logo h2 {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle, .hamburger {
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-color) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.2s both;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease 0.4s both;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--card-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #6C63FF, #00B4D8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .portfolio-content {
+            padding: 2.5rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .portfolio-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tag {
+            padding: 0.4rem 1rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: var(--bg-color);
+        }
+
+        .blog-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .blog-card {
+            background: var(--bg-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #FF6584, #FF9A8B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .blog-content {
+            padding: 2.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--card-bg);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-color);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-color);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--card-bg);
+            border-radius: 10px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            height: 200px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--header-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .portfolio-grid,
+            .blog-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2>Joshua  Ekundayo</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Crafting <span class="highlight">Words</span> That Sell & <span class="highlight">Designs</span> That Inspire</h1>
+                <p>I transform ideas into compelling narratives and beautiful visual experiences that drive results.</p>
+                <div>
+                    <a href="#portfolio" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+               <div class="about-image fade-in">
+    <img src="C:\Users\ASUS\Downloads\Ay Librarian.jpg" alt="Your Name - Professional Writer & Designer" style="width:100%; height:400px; object-fit:cover; border-radius:20px;">
+</div>
+                <div class="about-text fade-in">
+                    <h2>About Me</h2>
+                    <p>Hey there! I'm Joshua , a passionate creative professional with over 5 years of experience in copywriting, content creation, and visual design. I believe that great design and compelling copy are the ultimate power couple in the digital world.</p>
+                    <p>My journey started in journalism, evolved through marketing agencies, and now I help brands tell their stories in ways that resonate and convert.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Copywriting</span>
+                        <span class="skill-tag">Content Strategy</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Branding</span>
+                        <span class="skill-tag">SEO Optimization</span>
+                        <span class="skill-tag">Social Media</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item fade-in">
+                    <div class="about-image fade-in">
+    <img src="C:\Users\ASUS\Downloads\Nike Campaign.jpeg" alt="Your Name - Professional Writer & Designer" style="width:90%; height:400px; object-fit:cover; border-radius:20px;">
+</div>
+                    <div class="portfolio-content">
+                        <h3>Nike Campaign Copy</h3>
+                        <p>Developed compelling copy for Nike's summer collection that increased engagement by 42% and drove a 28% uplift in sales.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Copywriting</span>
+                            <span class="portfolio-tag">Brand Strategy</span>
+                            <span class="portfolio-tag">Social Media</span>
+                        </div>
+                        <a href="#" class="btn">View Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item fade-in">
+                   <div class="about-image fade-in">
+    <img src="C:\Users\ASUS\Downloads\rebranding.jpeg" alt="Your Name - Professional Writer & Designer" style="width:100%; height:400px; object-fit:cover; border-radius:20px;">
+</div>
+                    <div class="portfolio-content">
+                        <h3>Tech Startup Rebrand</h3>
+                        <p>Complete visual identity redesign including logo, brand guidelines, and marketing materials for a Series B tech company.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Branding</span>
+                            <span class="portfolio-tag">Visual Design</span>
+                            <span class="portfolio-tag">Logo Design</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>SaaS Website Redesign</h3>
+                        <p>Transformed conversion rates by 65% through strategic copywriting and UX improvements for a B2B SaaS platform.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">UX Writing</span>
+                            <span class="portfolio-tag">Web Design</span>
+                            <span class="portfolio-tag">Conversion Optimization</span>
+                        </div>
+                        <a href="#" class="btn">See Results</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-book: Digital Marketing</h3>
+                        <p>Authored a comprehensive 200-page e-book on modern digital marketing strategies that generated 5,000+ downloads.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Content Writing</span>
+                            <span class="portfolio-tag">E-book</span>
+                            <span class="portfolio-tag">Marketing</span>
+                        </div>
+                        <a href="#" class="btn">Read Sample</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="blog-preview">
+                <!-- Blog Post 1 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-feather"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>The Psychology Behind Persuasive Copy</h3>
+                        <p>Explore how understanding human psychology can transform your copy from good to irresistible. Learn the secrets that make people click, buy, and share.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Design Trends 2024: What's Next?</h3>
+                        <p>From neo-brutalism to AI-generated art, discover the design trends that will dominate 2024 and how to implement them in your projects.</p>
+                        <a href="#" class="btn">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Love</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"Joshua transformed our brand voice completely. The new copy increased our conversion rate by 65% in just three months. Absolutely phenomenal work!"</p>
+                    <p class="testimonial-author">- Sarah Chen, CEO at TechStart</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The design work exceeded all expectations. Joshua has an incredible eye for detail and understanding of brand psychology. Will definitely work together again."</p>
+                    <p class="testimonial-author">- Michael Rodriguez, Marketing Director</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The content strategy Joshua developed helped us rank on the first page of Google for 15+ keywords. The results speak for themselves."</p>
+                    <p class="testimonial-author">- Emily Thompson, Founder at Bloom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Create Together</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Ready to take your brand to the next level? Let's chat about how we can work together to create something amazing.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
+                <p class="copyright">&copy; 2024 Joshua  Ekundayo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for your message! I\'ll get back to you within 24 hours.');
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
